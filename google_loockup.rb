@@ -9,7 +9,7 @@ SESSION = GoogleDrive::Session.from_service_account_key(
 
 def loockup(key)
  row = @ws.rows.find { |r| r[0] == key }
- p row[1]
+ p row ? row[1] : 'Nothing found'
 end
 
-ARGV.each { |option| loockup(option) }
+ loockup(ARGV[0])
